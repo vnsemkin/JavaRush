@@ -1,6 +1,7 @@
 import java.util.*;
 
-public class EntrySet<S, I extends Number> {
+public class EntrySet{
+
     public static void main(String[] args) {
         Map<String, Integer> employers = new TreeMap<>();
         employers.put("Ivanov", 2500);
@@ -16,7 +17,7 @@ public class EntrySet<S, I extends Number> {
         System.out.println(entrySet);
 
         List<Map.Entry<String,Integer>> list = new ArrayList<>(entrySet);
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+        list.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o1.getValue().compareTo(o2.getValue());
