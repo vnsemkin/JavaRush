@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97317ed4-4cc7-49d2-ba7d-b98ea4b92bd6" name="Changes" comment="Version 7. Some syntax was changed." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AKztrEe1xqnct1pgS0qUggQqHE" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.MenuController">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JR_Ceasar" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MenuController" />
+      <module name="JR_Ceasar" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.Test" />
+      <module name="JR_Ceasar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MenuController" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97317ed4-4cc7-49d2-ba7d-b98ea4b92bd6" name="Changes" comment="" />
+      <created>1654773286241</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654773286241</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Version2. Bugs with some keys. Need help">
+      <created>1655302405055</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655302405055</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Version3. Decoding fixed. Need to add Brute Force decoding.">
+      <created>1655308681861</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655308681861</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Version3. Decoding fixed. Need to add Brute Force decoding.">
+      <created>1655308784325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655308784325</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Version4. Decoding fixed. Need to add Brute Force decoding.">
+      <created>1655355057216</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655355057216</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Version4. Decoding fixed. Need to add Brute Force decoding.">
+      <created>1655362081774</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655362081774</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Version 5. Added Brute Force Decoding.">
+      <created>1655378627302</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655378627302</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Version 5. Added Brute Force Decoding.">
+      <created>1655379409956</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655379409956</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Version 6. Some syntax was changed.">
+      <created>1655497441186</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655497441186</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Version 7. Some syntax was changed.">
+      <created>1655497650656</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655497650656</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Version 7. Some syntax was changed.">
+      <created>1656116078213</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656116078213</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Version2. Bugs with some keys. Need help" />
+    <MESSAGE value="Version3. Decoding fixed. Need to add Brute Force decoding." />
+    <MESSAGE value="Version4. Decoding fixed. Need to add Brute Force decoding." />
+    <MESSAGE value="Version 5. Added Brute Force Decoding." />
+    <MESSAGE value="Version 6. Some syntax was changed." />
+    <MESSAGE value="Version 7. Some syntax was changed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 7. Some syntax was changed." />
+  </component>
+</project>
