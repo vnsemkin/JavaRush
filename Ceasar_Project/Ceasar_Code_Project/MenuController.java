@@ -1,3 +1,4 @@
+package Ceasar_Code_Project;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,15 +10,8 @@ public class MenuController
             'Ц', 'ц', 'Ч', 'ч', 'Ш', 'ш', 'Щ', 'щ', 'Ъ', 'ъ', 'Ы', 'ы', 'Ь', 'ь', 'Э', 'э', 'Ю', 'ю', 'Я', 'я',
             '.', ',', '"', '”', ':', '-', '!', '?', '_', ' ', '(', ')', ';', '@', '+', '#', '№',
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
-    private static final UserInput userInput = new UserInput();
-    private static final Menu menu = new Menu();
-    private static final ReadFile readFile = new ReadFile();
-    private static final WriteEncryptedFile writeEncryptedFile = new WriteEncryptedFile();
-    private static final DecodeFile decodeFile = new DecodeFile();
-    private static final BruteForceDecode bruteForceDecode = new BruteForceDecode();
-    private static final CesarCryptFile cesarCryptFile = new CesarCryptFile();
 
-    private static ArrayList<Character> unencryptedFile = new ArrayList<>();
+    private static final ArrayList<Character> unencryptedFile = new ArrayList<>();
     private static ArrayList<Character> encryptedDoc = new ArrayList<>();
     private static final ArrayList<Character> cyrillicTemplate = new ArrayList<>();
     private static void setCyrillicTemplate(){
@@ -30,21 +24,24 @@ public class MenuController
         boolean isExit = false;
         while (!isExit)
         {
-            menu.mainMenu();
+            Menu.mainMenu();
             System.out.print("Выберите пункт меню :");
-            int userSelectedMenuItem = userInput.getUserInput(scanner);
+            int userSelectedMenuItem = UserInput.getUserInput(scanner);
         switch(userSelectedMenuItem)
         {
-                case 0 -> {System.out.println("<-----До свидания!----->");
-                        isExit = true ;}
-                case 1 -> unencryptedFile = readFile.fileReader(scanner, unencryptedFile);
-                case 2 -> readFile.printFile(unencryptedFile);
-                case 3 -> encryptedDoc = cesarCryptFile.cesarСipher(scanner,unencryptedFile,cyrillicTemplate);
-                case 4 -> cesarCryptFile.printEncryptedDocument(encryptedDoc);
-                case 5 -> writeEncryptedFile.writeEncryptedFile(scanner, encryptedDoc);
-                case 6 -> writeEncryptedFile.readEncryptedFile(scanner,encryptedDoc);
-                case 7 -> unencryptedFile = decodeFile.cesarDecoder(scanner, encryptedDoc, cyrillicTemplate,unencryptedFile);
-                case 8 -> unencryptedFile = bruteForceDecode.bruteForceDecode(unencryptedFile,cyrillicTemplate,encryptedDoc);
+                case 0 ->
+                {
+                    System.out.println("<-----До свидания!----->");
+                    isExit = true ;
+                }
+                case 1 -> ReadFile.fileReader(scanner, unencryptedFile);
+                case 2 -> ReadFile.printFile(unencryptedFile);
+                case 3 -> encryptedDoc = CesarCryptFile.cesarСipher(scanner,unencryptedFile,cyrillicTemplate);
+                case 4 -> CesarCryptFile.printEncryptedDocument(encryptedDoc);
+                case 5 -> WriteEncryptedFile.writeEncryptedFile(scanner, encryptedDoc);
+                case 6 -> WriteEncryptedFile.readEncryptedFile(scanner,encryptedDoc);
+                case 7 -> DecodeFile.cesarDecoder(scanner, encryptedDoc, cyrillicTemplate, unencryptedFile);
+                case 8 -> BruteForceDecode.bruteForceDecode(unencryptedFile, cyrillicTemplate, encryptedDoc);
                 case 9 -> System.out.println("Выбран пункт 9");
             }
         }

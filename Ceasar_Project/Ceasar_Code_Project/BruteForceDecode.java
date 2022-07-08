@@ -1,10 +1,11 @@
+package Ceasar_Code_Project;
 import java.util.ArrayList;
 
 public class BruteForceDecode
 {
-     ArrayList<Character> bruteForceDecode(ArrayList<Character> unencryptedFile
-            , ArrayList<Character> cyrillicTemplate
-            , ArrayList<Character> encryptedDoc)
+     static void bruteForceDecode(ArrayList<Character> unencryptedFile
+             , ArrayList<Character> cyrillicTemplate
+             , ArrayList<Character> encryptedDoc)
      {
         for (int key = 0; key < cyrillicTemplate.size(); key++)
         {
@@ -41,6 +42,5 @@ public class BruteForceDecode
                 }
             }
         }
-        return unencryptedFile;
-    }
+     }
 }

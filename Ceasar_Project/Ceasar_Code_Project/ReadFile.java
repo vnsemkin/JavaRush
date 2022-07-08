@@ -1,3 +1,4 @@
+package Ceasar_Code_Project;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadFile {
-    ArrayList<Character> fileReader(Scanner scanner, ArrayList<Character> unencryptedFile)
+    static void fileReader(Scanner scanner, ArrayList<Character> unencryptedFile)
     {
         boolean successReadingFile = true;
         Path path = null;
@@ -35,9 +36,8 @@ public class ReadFile {
             {
                 System.out.println("<-----Файл_Успешно_Считан----->!");
             }
-        return unencryptedFile;
     }
-    void printFile(ArrayList<Character> unencryptedFile)
+    static void printFile(ArrayList<Character> unencryptedFile)
     {
         if(unencryptedFile.size() == 0)
         {

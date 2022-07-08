@@ -1,10 +1,12 @@
+package Ceasar_Code_Project;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInput
 {
-    private int userInput = -1;
-    private int userInput(Scanner scanner)
+    private static int userInput = -1;
+    private static int userInput(Scanner scanner)
     {
             try
             {
@@ -31,7 +33,7 @@ public class UserInput
         return userInput;
     }
 
-    public int getUserInput(Scanner scanner)
+    public static int getUserInput(Scanner scanner)
     {
         return userInput(scanner);
     }

@@ -1,10 +1,11 @@
+package Ceasar_Code_Project;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DecodeFile
 {
-     ArrayList<Character> cesarDecoder(Scanner scanner
+     static void cesarDecoder(Scanner scanner
              , ArrayList<Character> encryptedDoc
              , ArrayList<Character> cyrillicTemplate
              , ArrayList<Character> unencryptedFile)
@@ -44,7 +45,6 @@ public class DecodeFile
         }
         System.out.println();
         System.out.println("<-----Расшифрованный_Файл----->");
-        return unencryptedFile;
-    }
+     }
 }
 

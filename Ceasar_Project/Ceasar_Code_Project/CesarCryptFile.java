@@ -1,3 +1,4 @@
+package Ceasar_Code_Project;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -5,8 +6,8 @@ import java.util.Scanner;
 public class CesarCryptFile
 {
     private static final ArrayList<Character> encryptedFile = new ArrayList<>();
-    ArrayList<Character> cesarСipher(Scanner scanner,ArrayList<Character> unencryptedFile,
-                                             ArrayList<Character> cyrillicTemplate)
+    static ArrayList<Character> cesarСipher(Scanner scanner, ArrayList<Character> unencryptedFile,
+                                            ArrayList<Character> cyrillicTemplate)
     {
         int key = 0;
         try
@@ -31,7 +32,6 @@ public class CesarCryptFile
                 if (unencryptedFile.get(i).equals(cyrillicTemplate.get(j)))
                 {
                     encryptedFile.add(cyrillicTemplate.get((j + key) % 93));
-                    continue;
                 } else if (encryptedFile.size() == i && j+1 == cyrillicTemplate.size())
                 {
                     encryptedFile.add(unencryptedFile.get(i));
@@ -42,7 +42,7 @@ public class CesarCryptFile
             System.out.println("<-----Документ успешно зашифрован----->");
         return encryptedFile;
     }
-    void printEncryptedDocument(ArrayList<Character> encryptedFile)
+    static void printEncryptedDocument(ArrayList<Character> encryptedFile)
     {
         System.out.println("<-----Encoded_Document----->");
         System.out.println();
