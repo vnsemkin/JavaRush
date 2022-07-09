@@ -1,6 +1,7 @@
 package Ceasar_Code_Project;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuController
@@ -11,18 +12,18 @@ public class MenuController
             '.', ',', '"', '”', ':', '-', '!', '?', '_', ' ', '(', ')', ';', '@', '+', '#', '№',
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
 
-    private static final ArrayList<Character> unencryptedFile = new ArrayList<>();
-    private static ArrayList<Character> encryptedDoc = new ArrayList<>();
-    private static final ArrayList<Character> cyrillicTemplate = new ArrayList<>();
-    private static void setCyrillicTemplate(){
+    private static final List<Character> unencryptedFile = new ArrayList<>();
+    private static final List<Character> encryptedDoc = new ArrayList<>();
+    private static final List<Character> cyrillicTemplate = new ArrayList<>();
+    private static void setCyrillicTemplate()
+    {
         cyrillicTemplate.addAll(Arrays.asList(ALPHABET_RUS));
     }
 
 
     static void menuController(Scanner scanner)
     {
-        boolean isExit = false;
-        while (!isExit)
+        while (true)
         {
             Menu.mainMenu();
             System.out.print("Выберите пункт меню :");
@@ -32,17 +33,18 @@ public class MenuController
                 case 0 ->
                 {
                     System.out.println("<-----До свидания!----->");
-                    isExit = true ;
+                    System.exit(0);
                 }
                 case 1 -> ReadFile.fileReader(scanner, unencryptedFile);
                 case 2 -> ReadFile.printFile(unencryptedFile);
-                case 3 -> encryptedDoc = CesarCryptFile.cesarСipher(scanner,unencryptedFile,cyrillicTemplate);
+                case 3 -> CesarCryptFile.cesarСipher(scanner,encryptedDoc,unencryptedFile,cyrillicTemplate);
                 case 4 -> CesarCryptFile.printEncryptedDocument(encryptedDoc);
                 case 5 -> WriteEncryptedFile.writeEncryptedFile(scanner, encryptedDoc);
                 case 6 -> WriteEncryptedFile.readEncryptedFile(scanner,encryptedDoc);
                 case 7 -> DecodeFile.cesarDecoder(scanner, encryptedDoc, cyrillicTemplate, unencryptedFile);
                 case 8 -> BruteForceDecode.bruteForceDecode(unencryptedFile, cyrillicTemplate, encryptedDoc);
-                case 9 -> System.out.println("Выбран пункт 9");
+                case 9 -> System.out.println("Метод не реализован.");
+                default -> System.out.println("Еще одна попытка. Сосредоточтесь");
             }
         }
     }

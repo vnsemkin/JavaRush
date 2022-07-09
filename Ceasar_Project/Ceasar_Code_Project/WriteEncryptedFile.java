@@ -2,7 +2,7 @@ package Ceasar_Code_Project;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class WriteEncryptedFile
@@ -15,7 +15,7 @@ public class WriteEncryptedFile
         return Path.of(scanner.nextLine());
     }
 
-    static void writeEncryptedFile(Scanner scanner, ArrayList<Character> encryptedDoc)
+    static void writeEncryptedFile(Scanner scanner, List<Character> encryptedDoc)
     {
         try {
             Path outPath = inputFilePath(scanner);
@@ -43,7 +43,7 @@ public class WriteEncryptedFile
         }
     }
 
-    static void readEncryptedFile(Scanner scanner, ArrayList<Character> encryptedDoc)
+    static void readEncryptedFile(Scanner scanner, List<Character> encryptedDoc)
     {
         Path outPath = inputFilePath(scanner);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(String.valueOf(outPath))))

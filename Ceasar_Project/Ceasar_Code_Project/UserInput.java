@@ -15,7 +15,6 @@ public class UserInput
                 {
                     System.out.println("""
                             <-------------------->
-                             Некорректный ввод!
                              Нет такого пункта меню!
                             <-------------------->
                             """);
@@ -23,12 +22,12 @@ public class UserInput
             } catch (InputMismatchException e)
             {
                 System.out.println("""
-                        <-------------------->
+                        \n<-------------------->
                         Некорректный ввод!
                         Введите число!
                         <-------------------->
                         """);
-                scanner.nextLine();
+                scanner.next();
             }
         return userInput;
     }

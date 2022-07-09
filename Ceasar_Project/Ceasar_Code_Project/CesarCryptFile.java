@@ -1,48 +1,51 @@
 package Ceasar_Code_Project;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class CesarCryptFile
 {
-    private static final ArrayList<Character> encryptedFile = new ArrayList<>();
-    static ArrayList<Character> cesarСipher(Scanner scanner, ArrayList<Character> unencryptedFile,
-                                            ArrayList<Character> cyrillicTemplate)
+    static int key ;
+    static void cesarСipher(Scanner scanner,
+                            List<Character> encryptedDoc,
+                            List<Character> unencryptedFile,
+                            List<Character> cyrillicTemplate)
     {
-        int key = 0;
-        try
-        {
-            System.out.print("Введите ключ :");
-            key =Math.abs(scanner.nextInt());
-        }catch (InputMismatchException e)
-        {
-            System.out.println("""
+        boolean isExit = false;
+        while(!isExit) {
+            try {
+                System.out.print("Введите ключ :");
+                key = Math.abs(scanner.nextInt());
+                isExit = true;
+            } catch (InputMismatchException e) {
+                System.out.println("""
                         ____________________
                         Некорректный ключ!
                         Введите число!
                         ____________________
                         """);
-            scanner.nextLine();
+                scanner.nextLine();
+            }
         }
-        encryptedFile.clear();
+        encryptedDoc.clear();
         for (int i =0; i < unencryptedFile.size(); i++)
         {
             for (int j = 0; j < cyrillicTemplate.size(); j++)
             {
                 if (unencryptedFile.get(i).equals(cyrillicTemplate.get(j)))
                 {
-                    encryptedFile.add(cyrillicTemplate.get((j + key) % 93));
-                } else if (encryptedFile.size() == i && j+1 == cyrillicTemplate.size())
+                    encryptedDoc.add(cyrillicTemplate.get((j + key) % 93));
+                    //if char don't find
+                } else if (encryptedDoc.size() == i && j+1 == cyrillicTemplate.size())
                 {
-                    encryptedFile.add(unencryptedFile.get(i));
+                    encryptedDoc.add(unencryptedFile.get(i));
                 }
             }
         }
-        if(!encryptedFile.isEmpty())
+        if(!encryptedDoc.isEmpty())
             System.out.println("<-----Документ успешно зашифрован----->");
-        return encryptedFile;
     }
-    static void printEncryptedDocument(ArrayList<Character> encryptedFile)
+    static void printEncryptedDocument(List<Character> encryptedFile)
     {
         System.out.println("<-----Encoded_Document----->");
         System.out.println();

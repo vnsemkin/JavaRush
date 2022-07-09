@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReadFile {
-    static void fileReader(Scanner scanner, ArrayList<Character> unencryptedFile)
+    static void fileReader(Scanner scanner, List<Character> unencryptedFile)
     {
         boolean successReadingFile = true;
         Path path = null;
@@ -37,7 +37,7 @@ public class ReadFile {
                 System.out.println("<-----Файл_Успешно_Считан----->!");
             }
     }
-    static void printFile(ArrayList<Character> unencryptedFile)
+    static void printFile(List<Character> unencryptedFile)
     {
         if(unencryptedFile.size() == 0)
         {
