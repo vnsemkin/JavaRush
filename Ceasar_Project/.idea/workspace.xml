@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97317ed4-4cc7-49d2-ba7d-b98ea4b92bd6" name="Changes" comment="Version 8. Some syntax was changed.">
+    <list default="true" id="97317ed4-4cc7-49d2-ba7d-b98ea4b92bd6" name="Changes" comment="Version 9. Some syntax was changed.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/BruteForceDecode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/BruteForceDecode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/CesarCryptFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/CesarCryptFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/DecodeFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/DecodeFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/ReadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/UserInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/UserInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ceasar_Code_Project/WriteEncryptedFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ceasar_Code_Project/WriteEncryptedFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +24,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AKztrEe1xqnct1pgS0qUggQqHE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -41,6 +35,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -116,6 +111,8 @@
       <workItem from="1657290599100" duration="177000" />
       <workItem from="1657375648065" duration="5220000" />
       <workItem from="1657380943624" duration="2627000" />
+      <workItem from="1657383632316" duration="179000" />
+      <workItem from="1657456161161" duration="46000" />
     </task>
     <task id="LOCAL-00001" summary="Version2. Bugs with some keys. Need help">
       <created>1655302405055</created>
@@ -194,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657289561320</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Version 9. Some syntax was changed.">
+      <created>1657383736418</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1657383736418</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +216,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Version2. Bugs with some keys. Need help" />
     <MESSAGE value="Version3. Decoding fixed. Need to add Brute Force decoding." />
     <MESSAGE value="Version4. Decoding fixed. Need to add Brute Force decoding." />
@@ -219,6 +224,7 @@
     <MESSAGE value="Version 6. Some syntax was changed." />
     <MESSAGE value="Version 7. Some syntax was changed." />
     <MESSAGE value="Version 8. Some syntax was changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 8. Some syntax was changed." />
+    <MESSAGE value="Version 9. Some syntax was changed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 9. Some syntax was changed." />
   </component>
 </project>
