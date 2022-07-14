@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.example.dao.ShopDAO;
 import org.example.models.Good;
+import org.example.models.Shop;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -50,6 +51,16 @@ public class ShopDAOTest
         System.out.println(hashMap);
         Assert.assertNotEquals(null, hashMap);
     }
+   @After
+        public void checkSetCash() {
+       boolean isCashAdded = false;
+        Shop.getINSTANCE().setCash(150400F);
+        if(Shop.getINSTANCE().getCash() != null)
+             isCashAdded = true;
+       System.out.println("Is cash added : " + isCashAdded);
+       assertTrue(isCashAdded);
+
+   }
 
 
 }
