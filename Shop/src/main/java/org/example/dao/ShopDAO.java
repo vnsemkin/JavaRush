@@ -12,89 +12,108 @@ import java.util.Set;
 
 /*
 ShopDAO
-1. addGood+
-2. findGood+
-3. removeGood+
+1. addGood;
+2. findGood;
+3. removeGood;
 4. createCheck;
-5. showGoods;+
-6. addEmployee+
-
+5. showGoods;
+6. addEmploee
+7.
  */
 public class ShopDAO
 {
 
-    private final Shop toolsShop = Shop.getINSTANCE();
-    private HashMap<Good, Integer> store = toolsShop.getStore();
-    Set<Good> goods;
+    private Shop shop = Shop.getINSTANCE();
 
-    public HashMap<Good, Integer> getStore() {
-        return store;
+
+    public final Shop getShop()
+    {
+        return shop;
     }
-
-    public Shop getToolsShop() {
-        return toolsShop;
-    }
-
     public void addGood(Good good, int amount)
     {
-        goods = store.keySet();
+        HashMap<Good, Integer> store = shop.getStore();
+        Set<Good> goods = store.keySet();
         for (Good goodIterator : goods)
         {
             if (goodIterator.getName().equals(good.getName()))
             {
                 store.put(goodIterator, store.get(goodIterator) + amount);
-                toolsShop.setStore(store);
+                shop.setStore(store);
                 return;
             }
         }
 
         store.put(good, amount);
-        toolsShop.setStore(store);
+        shop.setStore(store);
 
-    }
-    public void getGoods(){
-        System.out.println("###################################################");
-        System.out.println("Store of our "+ Shop.getShopName() + " contains : ");
-        System.out.println("###################################################");
-        for (Good goodIterator : goods){
-            System.out.println(goodIterator +", amount " + store.get(goodIterator));
-        }
     }
     public Good findGood(String name)
     {
-        goods = store.keySet();
+
+        HashMap<Good, Integer> store = shop.getStore();
+        Set<Good> goods = store.keySet();
+
         for (Good goodIterator : goods)
             if (goodIterator.getName().equals(name))
                 return goodIterator;
+
+
         return null;
     }
     public boolean removeGood(String name)
     {
-        goods = store.keySet();
+        HashMap<Good, Integer> store = shop.getStore();
+        Set<Good> goods = store.keySet();
+
         for (Good goodIterator : goods)
             if (goodIterator.getName().equals(name))
             {
                 store.remove(goodIterator);
-                toolsShop.setStore(store);
+                shop.setStore(store);
                 return true;
             }
         return false;
     }
-    public Check createCheck(List<Good> basket)
-    {
-        Check check = new Check(basket, "Liza");
 
-        return check;
+    public void addCash(Float amount)
+    {
+        shop.setCash(shop.getCash()+ amount);
+    }
+
+    public boolean removeGood(String name, Integer amount)
+    {
+
+        HashMap<Good, Integer> store = shop.getStore();
+        Set<Good> goods = store.keySet();
+        for (Good good : goods)
+        {
+            if(good.getName().equals(name))
+            {
+
+                int currAmount = store.get(good);
+
+                if(currAmount > amount)
+                {
+                    shop.getStore().put(good, (currAmount-amount));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public Check createCheck(Map<Good, Integer> basket, String name)
+    {
+
+        return new Check(basket, name);
     }
     public HashMap<Good, Integer> showGoods()
     {
-        return toolsShop.getStore();
+        return shop.getStore();
     }
     public void addEmployee(String name, EmployeeType employeeType)
     {
-        toolsShop.setEmployees(name, employeeType);
+        shop.getEmployees().put(name, employeeType);
     }
 
 }
-
-

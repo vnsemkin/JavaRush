@@ -24,8 +24,10 @@ public class Good
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
-                ", price=" + price;
+        return "Good{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public void setPrice(Float price) {

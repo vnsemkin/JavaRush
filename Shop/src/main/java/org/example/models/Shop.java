@@ -10,24 +10,16 @@ import java.util.HashMap;
 public class Shop
 {
     private static Shop INSTANCE = null;
-    private static final String shopName = "toolsShop";
-    private HashMap<Good, Integer> store = new HashMap<>();
-    private Float cash;
+    private static HashMap<Good, Integer> store = new HashMap<Good, Integer>();
+    private static Float cash = 50000F;
     private static HashMap<String, EmployeeType> employees = new HashMap<String, EmployeeType>();
 
-    private Shop(){
-
+    public static Shop getINSTANCE() {
+       if(INSTANCE == null)
+           INSTANCE = new Shop();
+       return INSTANCE;
     }
-    public static Shop getINSTANCE()
-    {
-        if(INSTANCE == null)
-            INSTANCE = new Shop();
-        return INSTANCE;
-    }
-    public static String getShopName(){
-        return shopName;
-    }
-
+    private Shop(){}
 
     public HashMap<Good, Integer> getStore() {
         return store;
@@ -49,18 +41,7 @@ public class Shop
         return employees;
     }
 
-    public void setEmployees(String name, EmployeeType employeeType)
-    {
-        employees.put(name, employeeType);
-    }
-
-    @Override
-    public String toString() {
-        return "Shop{" +
-                "\nstore=" + store +
-                "\ncash=" + cash + " usd" +
-                "\nemployees=" + employees +
-                "\n" +'}';
+    public void setEmployees(HashMap<String, EmployeeType> employees) {
+        this.employees = employees;
     }
 }
-
