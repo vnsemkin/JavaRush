@@ -15,6 +15,14 @@ public class Client
 {
 
     Map<Good, Integer> basket = new HashMap<>();
+    String name;
+
+    public Client(Map<Good, Integer> basket, String name, Float cash, List<Check> ordersHistory) {
+        this.basket = basket;
+        this.name = name;
+        this.cash = cash;
+        this.ordersHistory = ordersHistory;
+    }
 
     Float cash;
     List<Check> ordersHistory = new ArrayList<>();
@@ -39,5 +47,15 @@ public class Client
 
     public void setCash(Float cash) {
         this.cash = cash;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "basket=" + basket +
+                ", name='" + name + '\'' +
+                ", cash=" + cash +
+                ", ordersHistory=" + ordersHistory +
+                '}';
     }
 }

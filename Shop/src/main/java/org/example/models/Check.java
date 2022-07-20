@@ -1,8 +1,6 @@
 package org.example.models;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class Check
@@ -17,16 +15,26 @@ public class Check
         this.sellTime = new Date();
     }
 
+
     public Map<Good, Integer> getGoodList() {
         return goodList;
     }
 
-    public String getCasheir() {
+    public String getCashier() {
         return cashier;
     }
 
     public Date getSellTime() {
         return sellTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Check{" +
+                "goodList=" + goodList +
+                ", cashier='" + cashier + '\'' +
+                ", sellTime=" + sellTime +
+                '}';
     }
 }
 

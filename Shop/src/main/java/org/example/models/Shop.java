@@ -44,4 +44,6 @@ public class Shop
     public void setEmployees(HashMap<String, EmployeeType> employees) {
         this.employees = employees;
     }
+
+
 }

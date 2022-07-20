@@ -7,4 +7,5 @@ public enum EmployeeType
     DIRECTOR,
     MANAGER,
     FINANCE_MANGER
+
 }

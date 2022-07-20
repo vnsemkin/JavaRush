@@ -1,19 +1,17 @@
 package org.example;
-
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
 import org.example.dao.ShopDAO;
+import org.example.models.Check;
 import org.example.models.EmployeeType;
 import org.example.models.Good;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Unit test for simple App.
@@ -31,19 +29,17 @@ public class ShopDAOTest
     public void addGoodTest()
     {
         System.out.println("!!!!!!!!!!!!!!ADD GOOD TEST!!!!!!!!!!!!!!!");
-        Good chicken = new Good("Chicken", 1500F);
-        Good apple = new Good("apple", 500F);
-        Good candy = new Good("candy", 1900F);
-        Good banana = new Good("Banana ", 483F );
-
-        // adding goods to shop
-        shopDAO.addGood(candy, 100);
-        shopDAO.addGood(apple, 100);
-        shopDAO.addGood(banana, 100);
-        shopDAO.addGood(chicken, 100);
-
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt"))) {
+            while (bufferedReader.ready()) {
+                String str = (bufferedReader.readLine());
+                String[] goods = str.split(",", 3);
+                shopDAO.addGood(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
         printStore();
-        int expectedSize = 4;
+        int expectedSize = 6;
         int realSize = shopDAO.getShop().getStore().size();
         Assert.assertEquals(expectedSize, realSize);
     }
@@ -95,13 +91,62 @@ public class ShopDAOTest
     @Test
     public void createCheckTest()
     {
-        Good chicken = new Good("Chicken", 1500F);
-        Good apple = new Good("apple", 500F);
-        Good candy = new Good("candy", 1900F);
-        Good banana = new Good("Banana ", 483F );
-        List<Good> basket = new ArrayList<>();
-        Collections.addAll(basket, chicken, apple, candy, banana);
+        System.out.println("========Add goods========");
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt"))) {
+            while (bufferedReader.ready()) {
+                String str = (bufferedReader.readLine());
+                String[] goods = str.split(",", 3);
+                shopDAO.addGood(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
+        assertNotNull(shopDAO.showGoods());
+        System.out.println("Goods added to shop successfully");
 
+
+        //Print goods in the shop
+        System.out.println("========Show Goods========");
+        HashMap<Good, Integer> goodsHashMap = shopDAO.showGoods();
+        for(Map.Entry<Good, Integer> product : goodsHashMap.entrySet())
+        {
+            System.out.println("Name= " + product.getKey().getProductName()
+                    + ", price= " + product.getKey().getPrice()
+                    + ", amount= " + product.getValue());
+        }
+
+        Map<Good, Integer> basket = new HashMap<>();
+        for(Map.Entry<Good, Integer> product : goodsHashMap.entrySet())
+        {
+            switch (product.getKey().getProductName()) {
+                case "cheese":
+                    basket.put(product.getKey(), 5);
+                    goodsHashMap.put(product.getKey(), product.getValue() - 5);
+                    break;
+                case "apple":
+                    basket.put(product.getKey(), 15);
+                    goodsHashMap.put(product.getKey(), product.getValue() - 15);
+                    break;
+                case "chicken":
+                    basket.put(product.getKey(), 3);
+                    goodsHashMap.put(product.getKey(), product.getValue() - 3);
+                    break;
+            }
+
+        }
+
+        Check check = shopDAO.createCheck(basket, "Anton");
+        System.out.println("============Check Output=========");
+        System.out.print("Goods in basket :" );
+        for(Map.Entry<Good, Integer> product : check.getGoodList().entrySet()) {
+            System.out.print(
+                    "\nProduct: " + product.getKey().getProductName()
+                    +"\nPrice: " + product.getKey().getPrice()
+                    +"\nAmount: " + product.getValue());
+        }
+        System.out.println("\nCashier " + check.getCashier()
+                +"\nTime " + check.getSellTime()
+                +"\nThank you for purchase. See you later!");
         Assert.assertNotNull(shopDAO.createCheck(basket, "Anton"));
     }
 

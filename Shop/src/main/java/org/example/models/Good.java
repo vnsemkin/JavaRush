@@ -2,35 +2,40 @@ package org.example.models;
 
 public class Good
 {
-    String name;
+    String productName;
     Float price;
 
-    public Good(String name, Float price) {
-        this.name = name;
+    public Good(String productName, Float price) {
+        this.productName = productName;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public Good() {
+
+    }
+
+    public  String getProductName() {
+        return productName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.productName = name;
     }
 
     public Float getPrice() {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Good{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Good{" +
+                "productName='" + productName + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

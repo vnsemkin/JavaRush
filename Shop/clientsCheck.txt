@@ -1,0 +1,5 @@
+cheese,660.0,5
+apple,300.0,15
+chicken,450.0,3
+Anton
+Wed Jul 20 19:46:00 MSK 2022

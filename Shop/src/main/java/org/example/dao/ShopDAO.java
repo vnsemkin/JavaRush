@@ -4,9 +4,7 @@ import org.example.models.Check;
 import org.example.models.EmployeeType;
 import org.example.models.Good;
 import org.example.models.Shop;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,14 +15,14 @@ ShopDAO
 3. removeGood;
 4. createCheck;
 5. showGoods;
-6. addEmploee
+6. addEmployee
 7.
  */
 public class ShopDAO
 {
 
-    private Shop shop = Shop.getINSTANCE();
-
+    private final Shop shop = Shop.getINSTANCE();
+    Check check;
 
     public final Shop getShop()
     {
@@ -36,7 +34,7 @@ public class ShopDAO
         Set<Good> goods = store.keySet();
         for (Good goodIterator : goods)
         {
-            if (goodIterator.getName().equals(good.getName()))
+            if (goodIterator.getProductName().equals(good.getProductName()))
             {
                 store.put(goodIterator, store.get(goodIterator) + amount);
                 shop.setStore(store);
@@ -55,7 +53,7 @@ public class ShopDAO
         Set<Good> goods = store.keySet();
 
         for (Good goodIterator : goods)
-            if (goodIterator.getName().equals(name))
+            if (goodIterator.getProductName().equals(name))
                 return goodIterator;
 
 
@@ -67,7 +65,7 @@ public class ShopDAO
         Set<Good> goods = store.keySet();
 
         for (Good goodIterator : goods)
-            if (goodIterator.getName().equals(name))
+            if (goodIterator.getProductName().equals(name))
             {
                 store.remove(goodIterator);
                 shop.setStore(store);
@@ -88,7 +86,7 @@ public class ShopDAO
         Set<Good> goods = store.keySet();
         for (Good good : goods)
         {
-            if(good.getName().equals(name))
+            if(good.getProductName().equals(name))
             {
 
                 int currAmount = store.get(good);
@@ -104,9 +102,11 @@ public class ShopDAO
     }
     public Check createCheck(Map<Good, Integer> basket, String name)
     {
-
-        return new Check(basket, name);
+        check = new Check(basket, name);
+        return check;
     }
+
+
     public HashMap<Good, Integer> showGoods()
     {
         return shop.getStore();
