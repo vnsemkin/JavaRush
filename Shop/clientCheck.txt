@@ -1,0 +1,4 @@
+cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Thu Jul 21 12:32:11 MSK 2022;
+cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Thu Jul 21 12:32:17 MSK 2022;
+cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Thu Jul 21 12:32:20 MSK 2022;
+cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Thu Jul 21 12:32:23 MSK 2022;

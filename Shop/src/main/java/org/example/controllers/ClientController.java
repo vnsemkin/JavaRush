@@ -17,17 +17,9 @@ public class ClientController {
         Client client = new Client(12500F);
         ClientDAO clientDAO = new ClientDAO(client);
         ShopDAO shopDAO = new ShopDAO();
-        //Read goods from file
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt"))) {
-            while (bufferedReader.ready()) {
-                String str = (bufferedReader.readLine());
-                String[] goods = str.split(",", 3);
-                shopDAO.addGood(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
-            }
-        } catch (IOException e) {
-           e.getMessage();
-        }
-        //Print goods in the shop
+        //Fill shop store with goods from file goods.txt
+        shopDAO.fillShopWithGoods();
+        //Print goods from the shop
         System.out.println("========Show Goods========");
         HashMap<Good, Integer> goodsHashMap = shopDAO.showGoods();
         for(Map.Entry<Good, Integer> product : goodsHashMap.entrySet())
@@ -39,11 +31,6 @@ public class ClientController {
 
         // Достаем из базы корзину покупателя
         Map<Good, Integer> clientBasket = clientDAO.getClient().getBasket();
-
-
-        Set<Map.Entry<Good, Integer>> clientBasketEntrySet = clientBasket.entrySet();
-
-
         // Создаем корзину покупок и уменьшаем количество товара на  складе
         Map<Good, Integer> basket = new HashMap<>();
         for(Map.Entry<Good, Integer> product : goodsHashMap.entrySet())
@@ -78,21 +65,7 @@ public class ClientController {
                 +"\nTime " + check.getSellTime()
                 +"\nThank you for purchase. See you later!");
         //Записываем чек в файл
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("clientsCheck.txt")))
-        {
-            for(Map.Entry<Good, Integer> product : check.getGoodList().entrySet())
-            {
-                bufferedWriter.write(product.getKey().getProductName()
-                        + "," + product.getKey().getPrice()
-                        + "," + product.getValue());
-                bufferedWriter.newLine();
-            }
-            bufferedWriter.write(check.getCashier());
-            bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(check.getSellTime()));
-        } catch (IOException e) {
-            e.getMessage();
-        }
+        shopDAO.writeClientsCheck();
         // Перекидываем деньги от клиента магазину
         shopDAO.addCash(clientDAO.removeCash());
         // Передаем чек клиенту
