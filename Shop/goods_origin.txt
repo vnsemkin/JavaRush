@@ -1,0 +1,8 @@
+bread,200,120
+milk,150,250
+potatoes,80,1000
+apple,250,300
+fish,800,50
+chicken,500,2000
+beer,100,2500
+sauce,240,500

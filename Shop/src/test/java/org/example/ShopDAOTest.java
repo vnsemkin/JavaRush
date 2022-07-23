@@ -29,42 +29,33 @@ public class ShopDAOTest
     public void addGoodTest()
     {
         System.out.println("!!!!!!!!!!!!!!ADD GOOD TEST!!!!!!!!!!!!!!!");
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt")))
+        {
+            HashMap<Good, Integer> store = new HashMap<>();
             while (bufferedReader.ready()) {
                 String str = (bufferedReader.readLine());
                 String[] goods = str.split(",", 3);
-                shopDAO.addGood(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
+                store.put(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
             }
         } catch (IOException e) {
             e.getMessage();
         }
         printStore();
-        int expectedSize = 6;
+        int expectedSize = 8;
         int realSize = shopDAO.getShop().getStore().size();
         Assert.assertEquals(expectedSize, realSize);
     }
-
-
     @Test
     public void removeGoodTest()
     {
         System.out.println("!!!!!!!!!!!!!!REMOVE GOOD TEST!!!!!!!!!!!!!!!");
-        Good apple = new Good("apple", 500F);
-
-
-        // adding goods to shop
-        shopDAO.addGood(apple, 100);
-
-        printStore();
         System.out.println("=============Print before removing============");
-
-        // removing good from shop
-        boolean isRemoved = shopDAO.removeGood("apple");
         printStore();
+        // removing good from shop
         System.out.println("=============Print after removing============");
-
-
-        assertTrue( isRemoved );
+        shopDAO.removeGood("apple");
+        printStore();
+        //assertTrue( isRemoved );
     }
 
     @Test
@@ -164,17 +155,18 @@ public class ShopDAOTest
         System.out.println("=============Print before removing============");
 
         // removing good from shop
-        boolean isRemoved = shopDAO.removeGood("apple");
+        shopDAO.removeGood("apple");
         printStore();
         System.out.println("=============Print after removing============");
-        assertTrue( isRemoved );
+        //assertTrue( isRemoved );
 
     }
     public void printStore()
     {
-
         HashMap<Good, Integer> hashMap = shopDAO.showGoods();
-        System.out.println(hashMap);
+        for(Good good: hashMap.keySet()){
+            System.out.println(good+", amount="+hashMap.get(good));
+        }
         Assert.assertNotEquals(null, hashMap);
     }
 }

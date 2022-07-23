@@ -30,14 +30,15 @@ public class ShopDAO {
     {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt")))
         {
-            HashMap<Good, Integer> store = shop.getStore();
+            HashMap<Good, Integer> shopStore = new HashMap<>();
             while (bufferedReader.ready())
             {
                 String str = (bufferedReader.readLine());
                 String[] goods = str.split(",", 3);
-                store.put(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
+                shopStore.put(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
             }
-           shop.setStore(store);
+            //Rewrite shop store
+           shop.setStore(shopStore);
         } catch (IOException e) {
             e.getMessage();
         }
@@ -51,13 +52,23 @@ public class ShopDAO {
     {
         HashMap<Good, Integer> store = getActualProductName();
         Set<Good> goods = getActualProductName().keySet();
-        for (Good storeGood : goods) {
-            if (storeGood.getProductName().equals(good.getProductName())) {
+            for (Good storeGood : goods) {
+                if (storeGood.getProductName().equals(good.getProductName())) {
                 store.put(storeGood , store.get(storeGood) + amount);
                 //Rewrite shop store
                 shop.setStore(store);
-                return;
             }
+        }
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt")))
+        {
+            //Rewrite goods.txt from changed Hashmap store.
+            for (Good storeGood : goods)
+            {
+               bufferedWriter.write(storeGood+","+ store.get(storeGood));
+            }
+        }catch (IOException e)
+        {
+            e.getMessage();
         }
     }
     public void addGood(Good good, int amount)
@@ -71,6 +82,17 @@ public class ShopDAO {
                 shop.setStore(store);
             }
         }
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt")))
+        {
+            //Rewrite goods.txt from changed Hashmap store.
+            for (Good storeGood : goods)
+            {
+                bufferedWriter.write(storeGood+","+ store.get(storeGood));
+            }
+        }catch (IOException e)
+        {
+            e.getMessage();
+        }
     }
 
     public Good findGood(String name)
@@ -82,17 +104,28 @@ public class ShopDAO {
         return null;
     }
 
-    public boolean removeGood(String name) {
+    public void removeGood(String name) {
         HashMap<Good, Integer> store = getActualProductName();
-        Set<Good> goods = getActualProductName().keySet();
-        for (Good good : goods)
-            if (!good.getProductName().equals(name)) {
-                store.put(good, store.get(good));
-                //Rewrite shop store
-                shop.setStore(store);
-                return true;
+        HashMap<Good, Integer> tempStore = new HashMap<>();
+        //Set<Good> goods = getActualProductName().keySet();
+        for (Map.Entry<Good, Integer> good: store.entrySet()) {
+            if (!good.getKey().getProductName().equals(name)) {
+                tempStore.put(good.getKey(), good.getValue());
             }
-        return false;
+        }
+        // Rewrite shop store
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt"))) {
+            store = tempStore;
+            shop.setStore(store);
+            //Rewrite goods.txt from changed Hashmap store.
+            for (Map.Entry<Good, Integer> good: store.entrySet()) {
+                bufferedWriter.write(good.getKey().getProductName()
+                        +"," +good.getKey().getPrice()
+                        +"," +good.getValue()+"\n");
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 
     public void addCash(Float amount)
