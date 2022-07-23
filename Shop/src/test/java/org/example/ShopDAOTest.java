@@ -164,16 +164,12 @@ public class ShopDAOTest
         System.out.println("=============Print before removing============");
 
         // removing good from shop
-        boolean isRemoved = shopDAO.removeGood("apple", 50);
+        boolean isRemoved = shopDAO.removeGood("apple");
         printStore();
         System.out.println("=============Print after removing============");
-
-
         assertTrue( isRemoved );
 
     }
-
-
     public void printStore()
     {
 
@@ -181,7 +177,4 @@ public class ShopDAOTest
         System.out.println(hashMap);
         Assert.assertNotEquals(null, hashMap);
     }
-
-
-
 }

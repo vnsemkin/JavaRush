@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class Shop
 {
     private static Shop INSTANCE = null;
-    private static HashMap<Good, Integer> store = new HashMap<Good, Integer>();
+    private static HashMap<Good, Integer> store = new HashMap<>();
     private static Float cash = 50000F;
-    private static HashMap<String, EmployeeType> employees = new HashMap<String, EmployeeType>();
+    private static HashMap<String, EmployeeType> employees = new HashMap<>();
 
     public static Shop getINSTANCE() {
        if(INSTANCE == null)

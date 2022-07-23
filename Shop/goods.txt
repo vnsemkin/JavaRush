@@ -4,3 +4,5 @@ potatoes,150,1500
 pineapple,600,1000
 cheese,660,200
 bread,100,550
+milk,90,240
+fish,900,50

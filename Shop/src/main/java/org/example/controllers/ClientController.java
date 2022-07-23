@@ -4,7 +4,6 @@ import org.example.dao.ShopDAO;
 import org.example.models.Check;
 import org.example.models.Client;
 import org.example.models.Good;
-import java.io.*;
 import java.util.*;
 
 public class ClientController {
@@ -17,8 +16,6 @@ public class ClientController {
         Client client = new Client(12500F);
         ClientDAO clientDAO = new ClientDAO(client);
         ShopDAO shopDAO = new ShopDAO();
-        //Fill shop store with goods from file goods.txt
-        shopDAO.fillShopWithGoods();
         //Print goods from the shop
         System.out.println("========Show Goods========");
         HashMap<Good, Integer> goodsHashMap = shopDAO.showGoods();
