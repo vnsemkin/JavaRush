@@ -1,6 +1,4 @@
 package org.example;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.example.dao.ShopDAO;
 import org.example.models.Check;
 import org.example.models.EmployeeType;
@@ -12,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit test for simple App.
@@ -26,8 +26,9 @@ public class ShopDAOTest
     }
 
     @Test
-    public void addGoodTest()
+    public void fillShopFromFileTest()
     {
+        int expectedSize = 0;
         System.out.println("!!!!!!!!!!!!!!ADD GOOD TEST!!!!!!!!!!!!!!!");
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("goods.txt")))
         {
@@ -36,14 +37,20 @@ public class ShopDAOTest
                 String str = (bufferedReader.readLine());
                 String[] goods = str.split(",", 3);
                 store.put(new Good(goods[0], Float.parseFloat(goods[1])), Integer.parseInt(goods[2]));
+                expectedSize ++;
             }
         } catch (IOException e) {
             e.getMessage();
         }
         printStore();
-        int expectedSize = 8;
         int realSize = shopDAO.getShop().getStore().size();
         Assert.assertEquals(expectedSize, realSize);
+    }
+    @Test
+    public void addGood()
+    {
+        Good apple = new Good("apple", 260F);
+        shopDAO.addGood(apple, 100);
     }
     @Test
     public void removeGoodTest()
@@ -51,11 +58,13 @@ public class ShopDAOTest
         System.out.println("!!!!!!!!!!!!!!REMOVE GOOD TEST!!!!!!!!!!!!!!!");
         System.out.println("=============Print before removing============");
         printStore();
+        int originSize = shopDAO.getShop().getStore().size();
         // removing good from shop
         System.out.println("=============Print after removing============");
         shopDAO.removeGood("apple");
         printStore();
-        //assertTrue( isRemoved );
+        int sizeAfterRemove = shopDAO.getShop().getStore().size();
+        assertEquals(1, originSize - sizeAfterRemove);
     }
 
     @Test

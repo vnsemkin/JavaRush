@@ -4,3 +4,4 @@ cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Sat Jul 23 16:1
 cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Sat Jul 23 16:17:37 MSK 2022;
 cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Sat Jul 23 16:17:40 MSK 2022;
 cheese,660.0,5:apple,300.0,15:chicken,450.0,3:cashier,Anton:time,Sat Jul 23 16:37:24 MSK 2022;
+chicken,500.0,3:cashier,Anton:time,Sat Jul 23 20:02:46 MSK 2022;

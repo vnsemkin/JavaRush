@@ -71,24 +71,26 @@ public class ShopDAO {
             e.getMessage();
         }
     }
-    public void addGood(Good good, int amount)
-    {
-        HashMap<Good, Integer> store = getActualProductName();
-        Set<Good> goods = getActualProductName().keySet();
-        for (Good storeGood : goods) {
-            if (!storeGood.getProductName().equals(good.getProductName())) {
-                store.put(good, amount);
-                //Rewrite shop store
-                shop.setStore(store);
-            }
-        }
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt")))
+    public void addGood(Good good, int amount) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt", true)))
         {
-            //Rewrite goods.txt from changed Hashmap store.
-            for (Good storeGood : goods)
-            {
-                bufferedWriter.write(storeGood+","+ store.get(storeGood));
+            HashMap<Good, Integer> store = getActualProductName();
+            int goodsCount = store.size();
+            int matchCount = 0;
+            for (Map.Entry < Good, Integer > goodToAdd :store.entrySet()){
+                if (!goodToAdd.getKey().getProductName().equals(good.getProductName())) {
+                    matchCount++;
+                }
             }
+            if(goodsCount == matchCount)
+            {
+                store.put(good, amount);
+                    //Rewrite goods.txt from changed Hashmap store.
+                    bufferedWriter.write(good.getProductName()
+                            + "," + good.getPrice()
+                            + "," + amount + "\n");
+            }
+            shop.setStore(store);
         }catch (IOException e)
         {
             e.getMessage();
@@ -107,7 +109,6 @@ public class ShopDAO {
     public void removeGood(String name) {
         HashMap<Good, Integer> store = getActualProductName();
         HashMap<Good, Integer> tempStore = new HashMap<>();
-        //Set<Good> goods = getActualProductName().keySet();
         for (Map.Entry<Good, Integer> good: store.entrySet()) {
             if (!good.getKey().getProductName().equals(name)) {
                 tempStore.put(good.getKey(), good.getValue());
