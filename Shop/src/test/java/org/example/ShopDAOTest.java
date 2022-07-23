@@ -70,18 +70,14 @@ public class ShopDAOTest
     @Test
     public void findGoodTest()
     {
-        Good apple = new Good("apple", 500F);
-
-        // adding goods to shop
-        shopDAO.addGood(apple, 100);
-
+        addGood();
         Good result = shopDAO.findGood("apple");
         Assert.assertNotNull(result);
 
     }
 
     @Test
-    public void addEmployee()
+    public void addEmployeeTest()
     {
         shopDAO.addEmployee("Anton", EmployeeType.CASHIER);
         assertTrue(shopDAO.getShop().getEmployees().containsKey("Anton"));
@@ -151,24 +147,37 @@ public class ShopDAOTest
     }
 
     @Test
-    public void removeGoodByAmount()
+    public void removeNumberOfGoodTest()
     {
+        int x = 0;
+        int y = 0;
         System.out.println("!!!!!!!!!!!!!!REMOVE GOOD TEST!!!!!!!!!!!!!!!");
         Good apple = new Good("apple", 500F);
-
-
         // adding goods to shop
         shopDAO.addGood(apple, 100);
-
-        printStore();
         System.out.println("=============Print before removing============");
-
-        // removing good from shop
-        shopDAO.removeGood("apple");
         printStore();
+        HashMap<Good, Integer> beforeRemove = shopDAO.getActualProductName();
+        for(Map.Entry<Good, Integer> goodAmountBefore : beforeRemove.entrySet())
+        {
+            if(goodAmountBefore.getKey().getProductName().equals("apple"))
+            {
+                x = goodAmountBefore.getValue();
+            }
+        }
+        // removing good from shop
+        shopDAO.removeGoodAmount(apple, 25);
+        HashMap<Good, Integer> afterRemove = shopDAO.getActualProductName();
+        for(Map.Entry<Good, Integer> goodAmountAfter : afterRemove.entrySet())
+        {
+            if(goodAmountAfter.getKey().getProductName().equals("apple"))
+            {
+                y = goodAmountAfter.getValue();
+            }
+        }
         System.out.println("=============Print after removing============");
-        //assertTrue( isRemoved );
-
+        printStore();
+        assertEquals(25, x - y);
     }
     public void printStore()
     {

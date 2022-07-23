@@ -134,19 +134,30 @@ public class ShopDAO {
         shop.setCash(shop.getCash() + amount);
     }
 
-    public boolean removeGoodAmount(String name, Integer amount) {
-        HashMap<Good, Integer> store = getActualProductName();
-        Set<Good> goods = getActualProductName().keySet();
-        for (Good good : goods) {
-            if (good.getProductName().equals(name)) {
-                int currAmount = store.get(good);
-                if (currAmount > amount) {
-                    store.put(good, (currAmount - amount));
-                    return true;
+    public void removeGoodAmount(Good good, Integer amount)
+    {
+            HashMap<Good, Integer> myStore = getActualProductName();
+            for (Map.Entry<Good, Integer> goodAmount : myStore.entrySet()) {
+                if (goodAmount.getKey().getProductName().equals(good.getProductName())) {
+                    if (goodAmount.getValue() > amount) {
+                        myStore.put(goodAmount.getKey(), goodAmount.getValue() - amount);
+                        break;
+                    }
                 }
             }
+            shop.setStore(myStore);
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("goods.txt")))
+        {
+            //Rewrite goods.txt from changed Hashmap store.
+        for (Map.Entry<Good, Integer> removeGoodAmount: myStore.entrySet()) {
+            bufferedWriter.write(removeGoodAmount.getKey().getProductName()
+                    +"," +removeGoodAmount.getKey().getPrice()
+                    +"," +removeGoodAmount.getValue()+"\n");
         }
-        return false;
+
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 
     public Check createCheck(Map<Good, Integer> basket, String name) {
